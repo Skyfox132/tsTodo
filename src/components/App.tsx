@@ -30,6 +30,11 @@ function App():JSX.Element {
 
   }
 
+  const deleteTask = (id:number) => setTodos(todos.filter(todo => todo.id !== id))
+  
+
+
+
 
   //shadowDom
   return (
@@ -52,6 +57,7 @@ function App():JSX.Element {
 
       <TodoList
         todos={todos}
+        deleteTask={deleteTask}
       />
 
     </div>
