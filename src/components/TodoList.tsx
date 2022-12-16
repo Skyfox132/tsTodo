@@ -6,6 +6,7 @@ export interface ITodoListProps {
     todos: ITodo[],
     children?: ReactNode
     deleteTask: (id:number)=> void
+    changeStatus: (id:number)=> void
 }
 
 
@@ -13,7 +14,7 @@ export interface ITodoListProps {
 
 
 
-export default function TodoList ({todos, deleteTask}:ITodoListProps):JSX.Element {
+export default function TodoList ({todos, deleteTask, changeStatus}:ITodoListProps):JSX.Element {
   return (
     <>
     {
@@ -22,7 +23,10 @@ export default function TodoList ({todos, deleteTask}:ITodoListProps):JSX.Elemen
            return (<TodoItem key = {item.id} 
             id={item.id} 
             value={item.value} 
-            deleteTask={deleteTask}/>)
+            deleteTask={deleteTask}
+            changeStatus={changeStatus}
+            status={item.status}
+            />)
             
         })) : (console.log("arr > 0"))
     }

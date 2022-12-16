@@ -20,7 +20,8 @@ function App():JSX.Element {
     e.preventDefault()
     let todo = {
       value: value,
-      id: Math.floor(Math.random()*100000)
+      id: Math.floor(Math.random()*100000),
+      status: false,
     }
     let newTodo = [...todos, todo]
     // console.log(value, newTodo);
@@ -32,7 +33,17 @@ function App():JSX.Element {
 
   const deleteTask = (id:number) => setTodos(todos.filter(todo => todo.id !== id))
   
-
+  const changeStatus = (id:number) => {
+    setTodos(todos.map((todo) => {
+      if(todo.id !== id) {
+        return todo
+      } 
+      return {
+        ...todo,
+        status: !todo.status
+      }
+    }))
+  }
 
 
 
@@ -58,6 +69,7 @@ function App():JSX.Element {
       <TodoList
         todos={todos}
         deleteTask={deleteTask}
+        changeStatus={changeStatus}
       />
 
     </div>
