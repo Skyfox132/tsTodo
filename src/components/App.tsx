@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ITodo } from './types/types';
 import  TodoList  from './TodoList'
 
@@ -10,6 +10,15 @@ function App():JSX.Element {
   const [value, setValue] = useState("")
   const [todos, setTodos] = useState<ITodo[]>([])
 
+
+// useEffect(()=> {
+//   const meta = JSON.parse(localStorage.getItem("todo") || "")
+//   localStorage.setItem("todo", JSON.stringify(todos))
+
+//   if(meta !== todos) {
+
+//   }
+// },[todos])
 
   //methods
   const changeValue = (event: React.FormEvent<HTMLInputElement>):void => {
@@ -24,14 +33,15 @@ function App():JSX.Element {
       status: false,
     }
     let newTodo = [...todos, todo]
-    // console.log(value, newTodo);
-    
     value !=="" ? (setTodos(newTodo)) : (console.log())
     setValue("")
+    
 
   }
 
-  const deleteTask = (id:number) => setTodos(todos.filter(todo => todo.id !== id))
+  const deleteTask = (id:number) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
   
   const changeStatus = (id:number) => {
     setTodos(todos.map((todo) => {
@@ -52,17 +62,20 @@ function App():JSX.Element {
     <div className="App">
       <h1>Just do it:</h1>
       <form action="submit">
-
-        <input
-          type="text"
-          onChange={changeValue}
-          value={value}
-          placeholder={"Enter the task..."}
-          />
-        <button 
-          type='submit'
-          onClick={addToTask}
-        >Create task</button>
+       <div className='todo-container'>
+          <input
+              className='todo-input'
+              type="text"
+              onChange={changeValue}
+              value={value}
+              placeholder={"Enter the task..."}
+              />
+            <button 
+              className='create-btn btn'
+              type='submit'
+              onClick={addToTask}
+            >Create task</button>
+       </div>
 
       </form>
 

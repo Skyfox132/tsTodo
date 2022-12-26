@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-family: serif;
+}
+.App {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+.todo-input {
+    margin: 15px;
+    height: 30px;
+    width: 300px;
+    color: #696969;
+    border: 1px solid rgb(101, 49, 214);
+    border-radius: 8px;
+    padding-left: 15px;
+}
+
+.create-btn {
+    margin: 15px;
+    width: 150px;
+    height: 30px;
+    border: 1px solid rgb(101, 49, 214);
+    border-radius: 5px;
+    background-color: #ad75f7;
+    color: white;
+}
+
+.undone {
+    position: relative;
+}
+
+.undone::before {
+    content: "";
+    background: no-repeat contain url("../src/img/actual.png");
+    width: 30px;
+    height: 30px;
+}
+
+
+.done {
+    position: relative;
+    &::before {
+        content: "";
+        display: inline-block;
+        background-image: url("./favicon.ico");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -35px;
+    }
+}
+
+.todo-item__wrapper {
+    display: block;
+    width: 500px;
+    height: 50px;
+    padding-left: 50px;
+    position: relative;
+}
+
+.btn-delete {
+    position: absolute;
+    right: 80px;
+}
