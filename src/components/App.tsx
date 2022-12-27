@@ -1,24 +1,28 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { ITodo } from './types/types';
 import  TodoList  from './TodoList'
 
 
 
+
 function App():JSX.Element {
+  // initial items from localStorage
+  const getLocalStorage = (key:string, defaultValue:[]=[]) =>{
+    const localValue = JSON.parse(localStorage.getItem(key) || "")    
+    return localValue || defaultValue
+    
+  }
+  
   //states
+
   const [value, setValue] = useState("")
-  const [todos, setTodos] = useState<ITodo[]>([])
+  const [todos, setTodos] = useState<ITodo[]>(getLocalStorage("tasks"))
 
 
-// useEffect(()=> {
-//   const meta = JSON.parse(localStorage.getItem("todo") || "")
-//   localStorage.setItem("todo", JSON.stringify(todos))
-
-//   if(meta !== todos) {
-
-//   }
-// },[todos])
+  useEffect(()=> {
+    localStorage.setItem("tasks", JSON.stringify(todos))
+  },[todos])
 
   //methods
   const changeValue = (event: React.FormEvent<HTMLInputElement>):void => {
@@ -56,6 +60,20 @@ function App():JSX.Element {
   }
 
 
+const sortingTodo = ()=> {
+  const sortTodo = [...todos].sort((a:ITodo , b:ITodo):number=> {
+      if (a.status === false) {
+        return 1
+      } else if (a.status === true) {
+        return -1
+      }
+      return 0
+  })
+  setTodos(sortTodo)
+}
+
+
+
 
   //shadowDom
   return (
@@ -75,6 +93,13 @@ function App():JSX.Element {
               type='submit'
               onClick={addToTask}
             >Create task</button>
+            <button
+              className='btn sort'
+              type='button'
+              onClick={sortingTodo}
+            >
+              Sort Tasks
+            </button>
        </div>
 
       </form>
