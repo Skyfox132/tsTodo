@@ -5,7 +5,6 @@ import  TodoList  from './TodoList'
 
 
 
-
 function App():JSX.Element {
   // initial items from localStorage
   const getLocalStorage = (key:string, defaultValue:[]=[]) =>{
@@ -18,6 +17,23 @@ function App():JSX.Element {
 
   const [value, setValue] = useState("")
   const [todos, setTodos] = useState<ITodo[]>(getLocalStorage("tasks"))
+
+
+
+
+//mirage
+
+const sample = ()=> {
+  fetch("/api/reminders")
+  .then(res => res.json())
+  .then(json => console.log(json)
+  )
+}
+sample()
+
+// mirage
+
+
 
 
   useEffect(()=> {
