@@ -11,7 +11,7 @@ body {
 body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 25s ease infinite;
+  animation: gradient 15s ease infinite;
   height: 100vh;
 }
 
@@ -60,7 +60,10 @@ h3 {
   padding-left: 15px;
 }
 
-.btn {
+.create-btn {
+  margin: 1rem;
+  width: 150px;
+  height: 40px;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.26);
   border-radius: 8px;
@@ -72,12 +75,6 @@ h3 {
   letter-spacing: 1.1px;
   color: #fff;
   cursor: pointer;
-}
-
-.create-btn {
-  margin: 1rem;
-  width: 150px;
-  height: 40px;
 }
 .create-btn:hover {
   background-color: #fff;
@@ -161,17 +158,12 @@ h3 {
 .sort {
   width: 150px;
   height: 40px;
+  border: 1px solid rgb(101, 49, 214);
+  border-radius: 5px;
+  background-color: #356bf5;
+  color: white;
+  cursor: pointer;
 }
 .sort:hover {
   background-color: #9941a8;
-}
-
-.timer-container {
-  margin-top: 0;
-  font-size: 2.5rem;
-  color: #fff;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  text-align: center;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style_20230118103225.css.map */
